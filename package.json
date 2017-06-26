@@ -3,6 +3,11 @@
   "version": "1.0.0",
   "description": "Virtual Photo Gallery Using aframe.io",
   "main": "index.js",
+  "repository" :
+  {
+    "type" : "git",
+    "url" : "https://github.com/smarbos/muestraVirtual.git"
+  },
   "scripts": {
     "start": "live-server --no-browser --port=1337",
     "test": "echo \"Error: no test specified\" && exit 1"
