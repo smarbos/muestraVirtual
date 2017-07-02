@@ -2,13 +2,12 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Cubes</title>
+    <title>muestraVirtual</title>
     <meta name="description" content="Cubes - A-Frame">
     <script src="node_modules/aframe/dist/aframe-master.js"></script>
     <script src="node_modules/three/build/three.js"></script>
-    <script src="node_modules/aframe-physics-system/dist.js"></script>
+    <script src="node_modules/aframe-physics-system/dist/aframe-physics-system.js"></script>
     <script src="node_modules/aframe-extras/dist/aframe-extras.js"></script>
-    <script src="bundle.js"></script>
     <script type="text/javascript">
       window.onload = function(){
 
@@ -34,7 +33,7 @@
     </script>
   </head>
   <body>
-    <a-scene physics="debug: true">
+    <a-scene physics="debug: false">
       <a-assets>
         <img log="Hello, Box!" id="floor" src="textures/wood.jpg">
         <img id="wall" src="textures/wall_wood.jpg">
@@ -43,6 +42,7 @@
         <img id="foto_loca" src="images/foto_1.jpg">
         <img id="foto_martin" src="images/foto_2.jpg">
         <img id="foto_damian" src="images/foto_3.jpg">
+
       </a-assets>
 
       <a-image id="_foto_loca" src="#foto_loca" position="2 2 -3.49" depth="0" width="2.4" height="1.58" rotation="0 0 0"></a-image>
@@ -50,9 +50,9 @@
       <a-image src="#foto_damian" position="4.4 2 1" width="2.4" height="1.58" rotation="0 90 0"></a-image>
       <a-image draggable src="#foto_damian" position="-4.4 2 1" width="2.4" height="1.58" rotation="0 90 0"></a-image>
 
-        <a-camera kinematic-body id="camera" camera="userHeight: 2.8" height="" position="0 0 0" depth="0">
-          <a-cursor material="color: gray; opacity: 0.5" id="cursor"></a-cursor>
-        </a-camera>
+      <a-camera kinematic-body id="camera" camera="userHeight: 2.8" height="" position="0 0 0" depth="0">
+        <a-cursor material="color: gray; opacity: 0.5" id="cursor"></a-cursor>
+      </a-camera>
 
       <a-box id="techo" material="src: #ceiling" height="10" width="10" position="0 4 1" rotation="90 0 0" static-body></a-box>
 
@@ -60,9 +60,7 @@
 
       <a-box id="lateral_derecho" material="src: #wall; repeat: 3 1" height="3" width="10" static-body  position="5 2 1" rotation="180 90 0"></a-box>
 
-      <a-entity>
       <a-box id="frente"
-        geometry="primitive: box"
         static-body
         height="3"
         width="10"
@@ -70,11 +68,10 @@
         rotation="0 0 0"
         material="src: #wall; repeat: 3 1">
       </a-box>
-      <a-entity>
 
-      <a-box id="fondo"  material="src: #wall; repeat: 3 1" height="3" width="10" depth="1" static-body  position="0 2 6" rotation="180 0 0"></a-box>
+      <a-box id="fondo"  material="src: #wall; repeat: 3 1" height="3" width="10" static-body  position="0 2 6" rotation="180 0 0"></a-box>
 
-      <a-box material="src: #floor" height="10" width="10" static-body position="0 0.1 1" rotation="-90 0 0"></a-box>
+      <a-box material="src: #floor" height="10" width="10" static-body position="0 0.1 1"  depth="1" rotation="-90 0 0"></a-box>
 
     </a-scene>
   </body>
