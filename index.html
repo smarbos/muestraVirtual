@@ -5,37 +5,12 @@
     <title>muestraVirtual</title>
     <meta name="description" content="Cubes - A-Frame">
     <script src="node_modules/aframe/dist/aframe-master.js"></script>
-    <script src="node_modules/three/build/three.js"></script>
-    <script src="node_modules/aframe-physics-system/dist/aframe-physics-system.js"></script>
     <script src="node_modules/aframe-extras/dist/aframe-extras.js"></script>
-    <script type="text/javascript">
-      window.onload = function(){
-
-        var playerEl = document.querySelector('[camera]');
-        playerEl.addEventListener('collide', function (e) {
-          console.log(e);
-          console.log('Player has collided with body #' + e.detail.body.id);
-
-          e.detail.target.el;  // Original entity (playerEl).
-          e.detail.body.el;    // Other entity, which playerEl touched.
-          e.detail.contact;    // Stats about the collision (CANNON.ContactEquation).
-          e.detail.contact.ni; // Normal (direction) of the collision (CANNON.Vec3).
-        });
-
-
-        var camera = document.querySelector('a-camera');
-        camera.addEventListener('click', function (event) {
-          if(event.detail.intersectedEl.id) {
-            console.log('Clicked', event.detail.intersectedEl.id);
-          }
-        });
-      };
-    </script>
   </head>
   <body>
-    <a-scene physics="debug: false">
+    <a-scene>
       <a-assets>
-        <img log="Hello, Box!" id="floor" src="textures/wood.jpg">
+        <img id="floor" src="textures/wood.jpg">
         <img id="wall" src="textures/plaster_leak.jpg">
         <img id="ceiling" src="textures/whitewhite.jpg">
         <img id="grass" src="textures/ground_grass.jpg">
@@ -46,44 +21,83 @@
         <a-asset-item id="tree" src="3d_models/tree/tree.gltf"></a-asset-item>
         <a-asset-item id="duck" src="3d_models/duck/Duck.gltf"></a-asset-item>
 
+        <img id="texcur" src="images/texcur.jpg">
+
         <img id="img_1_a" src="images/1_a">
         <img id="img_1_b" src="images/1_b">
         <img id="img_1_c" src="images/1_c">
 
+        <img id="img_2_a" src="images/2_a">
+        <img id="img_2_b" src="images/2_b">
+
+        <img id="img_3_a" src="images/3_a">
+        <img id="img_3_b" src="images/3_b">
+        <img id="img_3_c" src="images/3_c">
+        <img id="img_3_d" src="images/3_d">
+
+        <img id="img_4_a" src="images/4_a">
+        <img id="img_4_b" src="images/4_b">
+        <img id="img_4_c" src="images/4_c">
+        <img id="img_4_d" src="images/4_d">
+        <img id="img_4_e" src="images/4_e">
+        <img id="img_4_f" src="images/4_f">
+
+        <img id="img_5_a" src="images/5_a">
+        <img id="img_5_b" src="images/5_b">
+        <img id="img_5_c" src="images/5_c">
+        <img id="img_5_d" src="images/5_d">
+
+        <img id="img_6_a" src="images/6_a">
+        <img id="img_6_b" src="images/6_b">
+        <img id="img_6_c" src="images/6_c">
+
+        <img id="img_7_a" src="images/7_a">
+        <img id="img_7_b" src="images/7_b">
+        <img id="img_7_c" src="images/7_c">
+
+        <img id="img_8_a" src="images/8_a">
+        <img id="img_8_b" src="images/8_b">
+
       </a-assets>
 
-      <!-- <a-image id="_foto_loca" src="#foto_loca" position="2 2 -3.49" depth="0" width="2.4" height="1.58" rotation="0 0 0"></a-image>
-      <a-image id="_foto_martin" src="#foto_martin" position="-2 2.3 -3.49" width="2.4" height="1.58" rotation="0 0 0"></a-image>
-      <a-image src="#foto_damian" position="4.4 2 1" width="2.4" height="1.58" rotation="0 90 0"></a-image>
-      <a-image draggable src="#foto_damian" position="-4.4 2 1" width="2.4" height="1.58" rotation="0 90 0"></a-image> -->
       <a-sky material="src: #sky"></a-sky>
-      <a-camera  id="camera" camera="userHeight: 2.8" height="" position="0 0 0" depth="0" universal-controls>
+      <a-camera  id="camera" camera="userHeight: 2.8" height="100" position="-20 0 -1" rotation="0 260 0" depth="0" universal-controls>
         <a-cursor material="color: gray; opacity: 0.5" id="cursor"></a-cursor>
       </a-camera>
 
-      <!-- <a-box id="techo" material="src: #ceiling" height="10" width="10" position="0 4 1" rotation="90 0 0" static-body></a-box> -->
-
       <a-box id="A_techo" material="src: #ceiling;" height="32" width="6" static-body position="-2 8.5 9" depth="0"  depth="1" rotation="-90 0 0"></a-box>
       <a-box id="A_atras_1" material="src: #wall" height="9" width="26" depth="0"  static-body position="-5 4 12" rotation="0 90 0"></a-box>
+      <a-image src="#texcur" height="6" width="4.2" position="0.9 4 8" rotation="0 270 0"></a-image>
       <a-box id="A_atras_sobre_puerta" material="src: #wall" height="3" width="2" depth="0"  static-body position="-5 7 -2" rotation="0 90 0"></a-box>
       <a-box id="A_atras_2" material="src: #wall" height="9" width="4" depth="0"  static-body position="-5 4 -5" rotation="0 90 0"></a-box>
       <a-box id="A_adelante_1" material="src: #wall" height="9" width="26" depth="0"  static-body position="1 4 12" rotation="0 90 0"></a-box>
+      <a-box id="B_atras" material="src: #wall" height="9" width="12" depth="0"  static-body position="1 4 12" rotation="0 90 0"></a-box>
       <a-box id="A_adelante_sobre_puerta" material="src: #wall" height="3" width="2" depth="0"  static-body position="1 7 -2" rotation="0 90 0"></a-box>
       <a-box id="A_adelante_2" material="src: #wall" height="9" width="4" depth="0"  static-body position="1 4 -5" rotation="0 90 0"></a-box>
       <a-box id="A_derecha" material="src: #wall" height="9" width="6" depth="0"  static-body position="-2 4 25" rotation="0 0 0"></a-box>
       <a-box id="A_izquierda" material="src: #wall" height="9" width="6" depth="0"  static-body position="-2 4 -7" rotation="0 0 0"></a-box>
       <a-box id="A_piso" material="src: #floor;" height="32" width="6" static-body position="-2 -0.5 9" depth="0"  depth="1" rotation="-90 0 0"></a-box>
 
-      <a-image src="#img_1_a" height="6.4" width="3.4" position="0.9 4 4" rotation="0 90 0"></a-image>
-      <a-image src="#img_1_b" height="6.4" width="3.4" position="0.9 4 9" rotation="0 90 0"></a-image>
-      <a-image src="#img_1_c" height="6.4" width="3.4" position="0.9 4 14" rotation="0 90 0"></a-image>
-
-
-
       <a-box id="B_techo" material="src: #ceiling" height="60" width="12" static-body position="31 8.5 -1" depth="0"  depth="1" rotation="-90 90 0"></a-box>
       <a-box id="B_atras" material="src: #wall" height="9" width="12" depth="0"  static-body position="61 4 -1" rotation="0 90 0"></a-box>
+      <a-image src="#img_7_a" height="4.2" width="2.7" position="60.9 4 -4" rotation="0 90 0"></a-image>
+      <a-image src="#img_7_b" height="3.45" width="5.1" position="60.9 4 1" rotation="0 90 0"></a-image>
+
+      <a-image src="#img_3_a" height="2.7" width="4.3" position="21.5 4 -6.9" rotation="0 0 0"></a-image>
+      <a-image src="#img_3_b" height="3" width="1.2" position="25 4 -6.9" rotation="0 0 0"></a-image>
+      <a-image src="#img_3_c" height="3.2" width="2" position="27 4 -6.9" rotation="0 0 0"></a-image>
+      <a-image src="#img_3_d" height="4.4" width="4.4" position="31 4 -6.9" rotation="0 0 0"></a-image>
+
+      <a-image src="#img_5_a" height="4.1" width="3.2" position="41 4 -6.9" rotation="0 0 0"></a-image>
+      <a-image src="#img_5_b" height="7.2" width="5.1" position="46 4 -6.9" rotation="0 0 0"></a-image>
+      <a-image src="#img_5_c" height="6" width="4.5" position="51.5 4 -6.9" rotation="0 0 0"></a-image>
+      <a-image src="#img_5_d" height="5.9" width="4.9" position="57.5 4 -6.9" rotation="0 0 0"></a-image>
+
+      <a-image src="#img_1_c" height="6.4" width="3.4" position="1.01 4 2" rotation="0 90 0"></a-image>
       <a-box id="B_izquierda_1" material="src: #wall" height="9" width="4" depth="0"  static-body position="3 4 -7" rotation="0 0 0"></a-box>
+      <a-image src="#img_1_a" height="6.4" width="3.4" position="3 4 -6.9" rotation="0 0 0"></a-image>
       <a-box id="B_izquierda_sobre_puerta" material="src: #wall" height="3" width="2" depth="0"  static-body position="6 7 -7" rotation="0 0 0"></a-box>
+      <a-image src="#img_1_b" height="6.4" width="3.4" position="10 4 -6.9" rotation="0 0 0"></a-image>
       <a-box id="B_izquierda_2" material="src: #wall; repeat: 5 2;" height="9" width="54" depth="0"  static-body position="34 4 -7" rotation="0 0 0"></a-box>
       <a-box id="B_piso" material="src: #floor" height="60" width="12" static-body position="31 -0.5 -1" depth="0"  depth="1" rotation="-90 90 0"></a-box>
 
@@ -129,27 +143,35 @@
 
       <a-box id="D_a_I_techo" material="src: #ceiling" height="60" width="20" static-body position="31 8.5 15" depth="0"  depth="1" rotation="-90 90 0"></a-box>
       <a-box id="D_a_I_derecha" material="src: #wall" height="9" width="64" depth="0"  static-body position="33 4 25" rotation="0 0 0"></a-box>
+
       <a-box id="A_adelante_1" material="src: #wall" height="9" width="20" depth="0"  static-body position="11 4 15" rotation="0 90 0"></a-box>
-      <a-box id="A_adelante_1" material="src: #wall" height="9" width="20" depth="0"  static-body position="21 4 15" rotation="0 90 0"></a-box>
-      <a-box id="A_adelante_1" material="src: #wall" height="9" width="20" depth="0"  static-body position="31 4 15" rotation="0 90 0"></a-box>
-      <a-box id="A_adelante_1" material="src: #wall" height="9" width="20" depth="0"  static-body position="41 4 15" rotation="0 90 0"></a-box>
-      <a-box id="A_adelante_1" material="src: #wall" height="9" width="20" depth="0"  static-body position="51 4 15" rotation="0 90 0"></a-box>
-      <a-box id="A_adelante_1" material="src: #wall" height="9" width="20" depth="0"  static-body position="61 4 15" rotation="0 90 0"></a-box>
+      <a-image src="#img_2_b" height="5.7" width="5.6" position="6 4 24.9" rotation="0 0 0"></a-image>
+
+      <a-box id="A_adelante_2" material="src: #wall" height="9" width="20" depth="0"  static-body position="21 4 15" rotation="0 90 0"></a-box>
+      <a-image src="#img_4_a" height="5.3" width="7.4" position="16 4 24.9" rotation="0 0 0"></a-image>
+
+      <a-image src="#img_4_c" height="4" width="3" position="20.9 4 10" rotation="0 90 0"></a-image>
+      <a-image src="#img_4_d" height="4" width="3" position="20.9 4 15" rotation="0 90 0"></a-image>
+      <a-image src="#img_4_e" height="4" width="3" position="20.9 4 20" rotation="0 90 0"></a-image>
+
+      <a-image src="#img_4_b" height="3.5" width="10.5" position="11.1 4 11" rotation="0 90 0"></a-image>
+      <a-image src="#img_4_f" height="3.5" width="6" position="11.1 4 21" rotation="0 90 0"></a-image>
+
+      <a-box id="A_adelante_3" material="src: #wall" height="9" width="20" depth="0"  static-body position="31 4 15" rotation="0 90 0"></a-box>
+      <a-image src="#img_6_b" height="7" width="5" position="26 4 24.9" rotation="0 180 0"></a-image>
+      <a-image src="#img_6_a" height="3" width="9" position="21.1 4 15" rotation="0 90 0"></a-image>
+
+      <a-box id="A_adelante_4" material="src: #wall" height="9" width="20" depth="0"  static-body position="41 4 15" rotation="0 90 0"></a-box>
+      <a-image src="#img_6_c" height="5" width="7" position="36 4 24.9" rotation="0 180 0"></a-image>
+
+      <a-box id="A_adelante_5" material="src: #wall" height="9" width="20" depth="0"  static-body position="51 4 15" rotation="0 90 0"></a-box>
+      <a-image src="#img_8_b" height="6" width="6.7" position="46 4 24.9" rotation="0 180 0"></a-image>
+
+
+      <a-box id="A_adelante_6" material="src: #wall" height="9" width="20" depth="0"  static-body position="61 4 15" rotation="0 90 0"></a-box>
+      <a-image src="#img_8_a" height="5.3" width="4.7" position="56 4 24.9" rotation="0 180 0"></a-image>
+
       <a-box id="D_a_I_piso" material="src: #floor" height="60" width="20" static-body position="31 -0.5 15" depth="0"  depth="1" rotation="-90 90 0"></a-box>
-      <!-- <a-box id="lateral_derecho" material="src: #wall; repeat: 3 1" height="3" width="10" static-body  position="5 2 1" rotation="180 90 0"></a-box>
-
-      <a-box id="frente"
-        static-body
-        height="3"
-        width="10"
-        position="0 2 -4"
-        rotation="0 0 0"
-        material="src: #wall; repeat: 3 1">
-      </a-box>
-
-      <a-box id="fondo"  material="src: #wall; repeat: 3 1" height="3" width="10" static-body  position="0 2 6" rotation="180 0 0"></a-box> -->
-
-
     </a-scene>
   </body>
 </html>
